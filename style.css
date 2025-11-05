@@ -1,0 +1,180 @@
+/* General Body Styles */
+body {
+    margin: 0;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    color: #fff;
+    text-align: center;
+    overflow: hidden; /* Prevent scrollbars due to animations */
+    background-color: #1a0033; /* Dark background for consistency */
+}
+
+/* Container for Page 1 */
+.container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    padding: 20px;
+    background: linear-gradient(135deg, #1f004b, #4b0082); /* Gradient background */
+}
+
+/* Main Title Style */
+.main-title, .page2-title {
+    font-size: 2.8em;
+    margin-bottom: 30px;
+    text-shadow: 3px 3px 6px rgba(0, 0, 0, 0.5);
+    color: #ffd700; /* Gold color for title */
+    background: -webkit-linear-gradient(45deg, #ffd700, #ff8c00);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+/* Krathong Display Area */
+.krathong-display {
+    margin-bottom: 40px;
+    width: 100%;
+    max-width: 600px; /* Limit krathong size */
+}
+
+.large-krathong {
+    width: 100%;
+    height: auto;
+    max-height: 70vh; /* Make sure it doesn't overflow */
+    object-fit: contain;
+    animation: pulse 2s infinite alternate; /* Gentle pulsing effect */
+}
+
+/* Pulse Animation */
+@keyframes pulse {
+    0% { transform: scale(1); }
+    100% { transform: scale(1.05); }
+}
+
+/* Float Button Style */
+.float-button, .back-button {
+    background-color: #ff4500; /* OrangeRed */
+    color: white;
+    padding: 15px 30px;
+    font-size: 1.5em;
+    border: none;
+    border-radius: 50px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    box-shadow: 0 8px 15px rgba(0, 0, 0, 0.3);
+    outline: none;
+}
+
+.float-button:hover, .back-button:hover {
+    background-color: #ff6347; /* Tomato */
+    transform: translateY(-3px);
+}
+
+.float-button:active, .back-button:active {
+    transform: translateY(1px);
+}
+
+/* Page 2 Specific Styles */
+.page2-body {
+    background-image: url('https://cms.dmpcdn.com/travel/2022/11/03/89d4df40-5b64-11ed-94ef-1f12ff16dc69_webp_original.jpg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between; /* Pushes button to bottom */
+    align-items: center;
+    min-height: 100vh;
+    padding: 20px;
+}
+
+.page2-title {
+    margin-top: 50px;
+    margin-bottom: auto; /* Pushes the title up, krathongs and button down */
+}
+
+.floating-krathong-container {
+    position: relative;
+    width: 100%;
+    height: 300px; /* Adjust as needed for krathong animation space */
+    margin: 50px 0;
+    display: flex;
+    justify-content: space-around;
+    align-items: flex-end; /* Krathongs start at the "water" level */
+    pointer-events: none; /* Make krathongs non-interactive */
+}
+
+.floating-krathong {
+    position: absolute;
+    width: 150px; /* Size of floating krathongs */
+    height: auto;
+    object-fit: contain;
+    animation-timing-function: ease-in-out;
+    animation-iteration-count: infinite;
+    animation-fill-mode: forwards;
+}
+
+.krathong-1 {
+    left: 10%;
+    animation: float1 20s infinite ease-in-out;
+    filter: drop-shadow(0 5px 10px rgba(0, 0, 0, 0.5));
+}
+
+.krathong-2 {
+    right: 15%;
+    animation: float2 25s infinite ease-in-out reverse; /* Reverse for different timing */
+    filter: drop-shadow(0 5px 10px rgba(0, 0, 0, 0.5));
+}
+
+/* Floating Krathong Animations */
+@keyframes float1 {
+    0% { transform: translate(0, 0) scale(1); opacity: 1; }
+    25% { transform: translate(150px, -20px) scale(0.98); }
+    50% { transform: translate(300px, 0) scale(0.95); opacity: 0.8; }
+    75% { transform: translate(450px, 20px) scale(0.92); }
+    100% { transform: translate(600px, 0) scale(0.9); opacity: 0.6; } /* Moves right, slightly changes scale and opacity */
+}
+
+@keyframes float2 {
+    0% { transform: translate(0, 0) scale(1); opacity: 1; }
+    25% { transform: translate(-150px, 25px) scale(0.97); }
+    50% { transform: translate(-300px, 0) scale(0.93); opacity: 0.75; }
+    75% { transform: translate(-450px, -25px) scale(0.90); }
+    100% { transform: translate(-600px, 0) scale(0.88); opacity: 0.5; } /* Moves left, slightly changes scale and opacity */
+}
+
+
+.back-button {
+    margin-top: auto; /* Pushes button to the bottom */
+    margin-bottom: 30px;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .main-title, .page2-title {
+        font-size: 2em;
+    }
+    .float-button, .back-button {
+        padding: 12px 25px;
+        font-size: 1.2em;
+    }
+    .floating-krathong {
+        width: 100px;
+    }
+    .krathong-1 {
+        left: 5%;
+    }
+    .krathong-2 {
+        right: 10%;
+    }
+}
+
+@media (max-width: 480px) {
+    .main-title, .page2-title {
+        font-size: 1.5em;
+    }
+    .float-button, .back-button {
+        padding: 10px 20px;
+        font-size: 1em;
+    }
+}
